@@ -1,0 +1,11 @@
+*.log
+*.swp
+
+.DS_Store
+
+cypress/videos/
+cypress/screenshots/
+cypress/e2e/telnyx/features/NOK
+node_modules
+
+
