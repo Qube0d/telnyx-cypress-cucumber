@@ -2,6 +2,12 @@
 class MainPage {
     //HEADER
     locatorHeader = {
+        ProductsDropDown() {
+            return cy.get('.sc-14c941d7-7>ul>li:nth-child(1)>span');
+        },
+        SeeAllProducts() {
+            return cy.get('header div a[href="/products"]');
+        },
         NetworkPage() {
             return cy.get('span a[href="/solutions/global-ip-network"]');
         },
@@ -117,6 +123,22 @@ class MainPage {
     }
 
     //HEADER
+    focusProductsDropDown() {
+        //cy.get('.sc-14c941d7-7>ul>li:nth-child(1)>span').contains('See all products').click()
+        this.locatorHeader.ProductsDropDown().click();
+        //cy.wait('See all products').should('be.visible');
+        //cy.get('select').select().should('have.text', 'See all products');
+        //this.locatorHeader.ProductsDropDown().focused()
+        //this.locatorHeader.ProductsDropDown().wait(2000);
+    }
+    clickSeeAllProducts() {
+        this.locatorHeader.SeeAllProducts().click({ force: true })
+        //this.locatorHeader.SeeAllProducts().invoke('removeAttr', 'target').click();
+    }
+    URLSeeAllProducts() {
+        cy.url().should('eq', 'https://telnyx.com/products')
+    }
+    
     clickSignUp() {
         this.locatorHeader.SignUp().invoke('removeAttr', 'target').click();
     }
