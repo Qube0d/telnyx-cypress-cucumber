@@ -2,6 +2,9 @@
 class MainPage {
     //HEADER
     locatorHeader = {
+        NetworkPage() {
+            return cy.get('span a[href="/solutions/global-ip-network"]');
+        },
         SignUp() {
             return cy.get('header li a[href="/sign-up"]');
         },
@@ -100,6 +103,11 @@ class MainPage {
     }
     checkHeaderSignUp(){
         this.locatorHeader.SignUp().should('have.text', 'Sign up', 'visible');
+    }
+    clickNetworkPage() {
+        this.locatorHeader.NetworkPage().invoke('removeAttr', 'target').click();
+        this.locatorHeader.NetworkPage().should('have.text', 'Network', 'visible');
+        cy.url().should('eq', 'https://telnyx.com/solutions/global-ip-network')
     }
 
     //FOOTER
