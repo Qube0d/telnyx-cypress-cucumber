@@ -24,6 +24,30 @@ class MainPage {
             return cy.get('header span a[href="/products/storage"]');
         }
     }
+    //BODY
+    locatorBody = {
+    //Switch + Save with Telnyx.
+    SwitchSaveBlock() {
+            return cy.get('.sc-1e626587-1');   
+    },
+    VoiceButton() {
+            return cy.get('.ButtonGroup__Container-sc-6knlsx-0>button:nth-child(1)');
+    },
+    SmsButton() {
+            return cy.get('.ButtonGroup__Container-sc-6knlsx-0>button:nth-child(2)');
+    },
+    OutboundCallsSwitcher() {
+            return cy.get('.ant-slider>div:nth-child(4)');
+    },
+    SaveUP() {
+            return cy.get('.sc-1a5981e5-15') 
+    },    
+        
+
+        
+
+        
+    }
     //FOOTER
     locatorsFooter = {
         //BLOCK FOOTER
@@ -109,6 +133,30 @@ class MainPage {
         this.locatorHeader.NetworkPage().should('have.text', 'Network', 'visible');
         cy.url().should('eq', 'https://telnyx.com/solutions/global-ip-network')
     }
+
+    //BODY
+    //Switch + Save with Telnyx.
+    scrollSwitchSaveBlock() {
+        this.locatorBody.SwitchSaveBlock().scrollIntoView().wait(2000);
+    }
+    clickVoice() {
+        this.locatorBody.VoiceButton().invoke('removeAttr','target').click()
+    }
+    moveOutboundCallsSwitcher() {
+        this.locatorBody.OutboundCallsSwitcher().first()
+        .trigger('mousedown', { button: 0 }, { force: true })
+        .wait(2000)
+        .trigger('mousemove', 50, 0, { force: true })
+        .trigger('mouseup'); 
+    }
+    checkSaveUP() {
+        this.locatorBody.SaveUP().first().contains('$2778');
+    }
+
+
+
+
+
 
     //FOOTER
     //BLOCK FOOTER
