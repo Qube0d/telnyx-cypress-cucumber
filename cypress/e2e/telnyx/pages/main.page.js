@@ -11,6 +11,9 @@ class MainPage {
         PricingDropDown() {
             return cy.get('.sc-14c941d7-7>ul>li:nth-child(10)>span');
         },
+        SmsAPI() {
+            return cy.get('header a[href="/pricing/messaging"]');
+        },
         SeeAllPricing() {
             return cy.get('[href="/pricing"]');
         },
@@ -153,6 +156,25 @@ class MainPage {
     URLSeeAllPricing() {
         cy.url().should('eq', 'https://telnyx.com/pricing')
     }
+    clickSmsAPI() {
+        this.locatorHeader.SmsAPI().click({ force: true })
+        cy.url().should('eq', 'https://telnyx.com/pricing/messaging')
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     clickSignUp() {
         this.locatorHeader.SignUp().invoke('removeAttr', 'target').click();
