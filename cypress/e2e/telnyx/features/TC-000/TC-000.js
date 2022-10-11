@@ -1,5 +1,4 @@
 import { Given, When, Then, And } from "@badeball/cypress-cucumber-preprocessor";
-//import testPage from '../../pages/test.page';
 import supportPage from '../../pages/support.page';
 import mainPage from '../../pages/main.page';
 import misc from '../../pages/misc.page'
