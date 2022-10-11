@@ -8,6 +8,12 @@ class MainPage {
         SeeAllProducts() {
             return cy.get('header div a[href="/products"]');
         },
+        PricingDropDown() {
+            return cy.get('.sc-14c941d7-7>ul>li:nth-child(10)>span');
+        },
+        SeeAllPricing() {
+            return cy.get('[href="/pricing"]');
+        },
         NetworkPage() {
             return cy.get('span a[href="/solutions/global-ip-network"]');
         },
@@ -138,7 +144,16 @@ class MainPage {
     URLSeeAllProducts() {
         cy.url().should('eq', 'https://telnyx.com/products')
     }
-    
+    focusPricingDropDown() {
+        this.locatorHeader.PricingDropDown().click();
+    }
+    clickSeeAllPricing() {
+        this.locatorHeader.SeeAllPricing().click({ force: true })
+    }
+    URLSeeAllPricing() {
+        cy.url().should('eq', 'https://telnyx.com/pricing')
+    }
+
     clickSignUp() {
         this.locatorHeader.SignUp().invoke('removeAttr', 'target').click();
     }
