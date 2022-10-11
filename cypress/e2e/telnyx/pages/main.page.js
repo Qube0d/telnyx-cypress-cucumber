@@ -41,12 +41,7 @@ class MainPage {
     },
     SaveUP() {
             return cy.get('.sc-1a5981e5-15') 
-    },    
-        
-
-        
-
-        
+    }, 
     }
     //FOOTER
     locatorsFooter = {
@@ -213,6 +208,12 @@ class MainPage {
     }
     checkUrlLinkedIn() {
         cy.url().should('eq', 'https://www.linkedin.com/company/telnyx/')
+    }
+    clickFollowOnTwitter() {
+        this.locatorsFooter.FollowOnTwitter().invoke('removeAttr', 'target').click();
+    }
+    checkUrlFollowOnTwitter() {
+        cy.url().should('eq', 'https://twitter.com/telnyx')
     }
 
 
