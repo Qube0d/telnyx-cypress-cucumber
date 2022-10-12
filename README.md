@@ -36,9 +36,9 @@ The page objects are in: cypress\e2e\telnyx\pages\ \*.page.js
 
 <h3 align="center">Run</h3>
 Launch Cypress with the following commands in the terminal:
-npx cypress run
-or 
-npx cypress open (to run in headed mode)
+<br>npx cypress run<br>
+<br>or<br> 
+<br>npx cypress open (to run in headed mode)<br>
 
 After a while, the cypress will open.
 In the window that opens, click on any of the tests: \*.js
