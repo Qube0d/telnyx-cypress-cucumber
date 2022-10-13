@@ -16,7 +16,7 @@ Download and install at least Node.js 14
 In terminal type:
 npm install
 
-npm init -y
+// npm init -y
 
 npm install cypress --save-dev
 
