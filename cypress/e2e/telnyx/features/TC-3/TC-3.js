@@ -5,7 +5,6 @@ import aboutPage from '../../pages/about.company.page';
 import careersPage from '../../pages/careers.page';
 import dataAndPrivacy from '../../pages/dataAndPrivacy.page';
 import miscPage from '../../pages/misc.page';
-import testPage from '../../pages/test.page';
 import developersDocs from '../../pages/developers.docs.page';
 import blogPage from '../../pages/blog.page';
 import resourceHub from '../../pages/resource.hub.page';
