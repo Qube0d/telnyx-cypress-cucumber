@@ -9,3 +9,4 @@ cypress/e2e/telnyx/features/NOK
 node_modules
 
 
+.github/workflows/playwright.yml
