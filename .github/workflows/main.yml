@@ -1,5 +1,4 @@
 name: Cypress Tests
-
 on:
   workflow_dispatch:
   push:
@@ -7,30 +6,32 @@ on:
   pull_request:
     branches: [main]
 jobs:
-test:
-  timeout-minutes: 60
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14.x'
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
-    - name: Reports Generate
-      if: ${{ failure() || success() }}
-      run: npx allure generate ./allure-results --clean
-    - name: Deploy Report
-      uses: JamesIves/github-pages-deploy-action@v4.4.0 # GH Action
-      if: ${{ failure() || success() }}
-      with:
-        branch: master
-        folder: ./allure-report
-        target-folder: ./docs
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm ci
+      - name: Install
+        run: npm install cypress --save-dev
+      - name: Install cucu
+        run: npm install --save-dev @cucumber/cucumber
+      - name: Run
+        run: npx cypress run
+      - name: Reports Generate
+        if: ${{ failure() || success() }}
+        run: npx allure generate ./allure-results --clean
+      - name: Deploy Report
+        uses: JamesIves/github-pages-deploy-action@v4.4.0 # GH Action
+        if: ${{ failure() || success() }}
+        with:
+          branch: main
+          folder: ./allure-report
+          target-folder: ./docs
   #cypress-run:
   #runs-on: ubuntu-latest
   #steps:
