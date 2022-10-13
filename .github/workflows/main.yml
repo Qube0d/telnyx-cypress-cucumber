@@ -1,6 +1,5 @@
-name: Cypress Tests
+name: Telnyx_cypress Main
 on:
-  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
@@ -16,28 +15,5 @@ jobs:
           node-version: '14.x'
       - name: Install dependencies
         run: npm ci
-      - name: Install
-        run: npm install cypress --save-dev
-      - name: Install cucu
-        run: npm install --save-dev @cucumber/cucumber
-      - name: Run
-        run: npx cypress run
-      - name: Reports Generate
-        if: ${{ failure() || success() }}
-        run: npx allure generate ./allure-results --clean
-      - name: Deploy Report
-        uses: JamesIves/github-pages-deploy-action@v4.4.0 # GH Action
-        if: ${{ failure() || success() }}
-        with:
-          branch: main
-          folder: ./allure-report
-          target-folder: ./docs
-  #cypress-run:
-  #runs-on: ubuntu-latest
-  #steps:
-  #- name: Checkout
-  # uses: actions/checkout@v2
-  #- name: Cypress run
-  # uses: cypress-io/github-action@v4
-  # with:
-  #   build:  npx cypress run --spec  cypress/e2e/telnyx/specs/*.cy.js
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
