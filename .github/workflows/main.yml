@@ -16,7 +16,21 @@ test:
       with:
         node-version: '14.x'
     - name: Install dependencies
-        run: npm ci
+      run: npm ci
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+    - name: Run Playwright tests
+      run: npx playwright test
+    - name: Reports Generate
+      if: ${{ failure() || success() }}
+      run: npx allure generate ./allure-results --clean
+    - name: Deploy Report
+      uses: JamesIves/github-pages-deploy-action@v4.4.0 # GH Action
+      if: ${{ failure() || success() }}
+      with:
+        branch: master
+        folder: ./allure-report
+        target-folder: ./docs
   #cypress-run:
   #runs-on: ubuntu-latest
   #steps:
