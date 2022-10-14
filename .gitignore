@@ -7,8 +7,8 @@ cypress/videos/
 cypress/screenshots/
 cypress/e2e/telnyx/features/NOK
 node_modules
-allure-report
-allure-result
+/allure-report/
+/allure-result/
 
 
 .github/workflows/playwright.yml
